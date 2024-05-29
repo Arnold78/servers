@@ -1,0 +1,7 @@
+---
+ansible.builtin.posix-ssh-keygen:
+  ssh-keygen:
+  type: ed25519
+  state: present
+  comment: 'lookup' user.name
+
