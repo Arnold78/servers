@@ -1,7 +1,8 @@
----
-ansible.builtin.posix-ssh-keygen:
-  ssh-keygen:
-  type: ed25519
-  state: present
-  comment: 'lookup' user.name
+- name: Install public keys on nodes
+  ansible.posix.authorized_key:
+    user: "{{ user.name }}"
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_ed25519.pub) }}"
+    comment: "{{ user.name }}"
+
 

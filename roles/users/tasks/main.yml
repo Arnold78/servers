@@ -1,0 +1,14 @@
+# #Set user to no passwords
+# - name: Change sudoers file
+#   ansible.builtin.set.facts:
+#     path: /etc/sudoers.d
+#     state: present
+
+
+- name: Change sudoers file
+  ansible.builtin.template:
+    src: /files/arnold
+    path: /etc/sudoers.d/arnold
+    state: present
+    validate: /usr/sbin/visudo -cf %s
+
